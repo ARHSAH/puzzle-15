@@ -20,7 +20,11 @@ public class Main {
 
         JFrame frame = new JFrame();
         MyPanel panel = MyPanel.getInstance();
-        int maxSize = Math.max(Variables.screenWidth, Variables.screenHeight) / 3;
+        screenHeight += (widthTiles - 3 ) * 280;
+        screenWidth += (heightTiles - 3) * 280;
+        screenXLocation -= (widthTiles - 3) * 50;
+        screenYLocation += (heightTiles - 3) * 50;
+        int maxSize = Math.max(screenWidth, screenHeight) / 3;
         panel.setSize(maxSize, maxSize);
         panel.setLocation(screenXLocation, screenYLocation);
         frame.setSize(panel.getSize());
@@ -31,7 +35,7 @@ public class Main {
 //                new ArrayList<Integer>(Arrays.asList(4, 1, 7, 2, 6, 0, 8, 3, 5));
         ArrayList<Integer> piecesRandomOrder =
                 new ArrayList<Integer>(Arrays.asList(4, 1, 7, 2, 6, 0, 8, 3, 5, 9, 10, 11,
-                        12, 13, 14 ,15));
+                        12, 13, 14, 15));
 
         for (int i = 0; i < piecesRandomOrder.size(); i++)
             if (piecesRandomOrder.get(i) == widthTiles * heightTiles - 1)
@@ -49,12 +53,16 @@ public class Main {
                 puzzlePieces.add(new
                         PuzzlePiece(
                                 piecesRandomOrder.get(i) + 1 + ".png",
-                        new Location(panel.getHeight() / heightTiles * (i % heightTiles),
-                                panel.getWidth() / widthTiles * (i / widthTiles))));
+                        new Location(panel.getWidth() / widthTiles *
+                                (i % widthTiles),
+                                panel.getHeight() /
+                                        heightTiles * (i / widthTiles))));
             } else {
                 puzzlePieces.add(new PuzzlePiece("missing.jpg",
-                        new Location(panel.getHeight() / heightTiles * (i % heightTiles),
-                                panel.getWidth() / widthTiles * (i / widthTiles))));
+                        new Location(panel.getHeight() /
+                                widthTiles * (i % widthTiles),
+                                panel.getWidth() /
+                                        heightTiles * (i / widthTiles))));
             }
         }
         panel.setPuzzlePieces(puzzlePieces);
@@ -62,7 +70,6 @@ public class Main {
         frame.setVisible(true);
         while (true) {
             try {
-                // TODO: CHANGE THIS FOR IMPROVING YOUR FRAME RATE... (OPTIONAL)
                 Thread.sleep(1000 / 100);
             } catch (InterruptedException e) {
                 e.printStackTrace();

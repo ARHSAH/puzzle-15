@@ -36,13 +36,15 @@ public class MyKeyListener implements KeyListener {
             if (missingPieceIndex <= widthTiles - 1) {
                 return;
             }
-            MyPanel.getInstance().swapPieces(missingPieceIndex, missingPieceIndex - 3);
+            MyPanel.getInstance().swapPieces(missingPieceIndex,
+                    missingPieceIndex - widthTiles);
             MyPanel.getInstance().setMissingPiece(missingPieceIndex - widthTiles);
         } else if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
             if (missingPieceIndex >= widthTiles * (heightTiles - 1)) {
                 return;
             }
-            MyPanel.getInstance().swapPieces(missingPieceIndex, missingPieceIndex + 3);
+            MyPanel.getInstance().swapPieces(missingPieceIndex,
+                    missingPieceIndex + widthTiles);
             MyPanel.getInstance().setMissingPiece(missingPieceIndex + widthTiles);
         }
 

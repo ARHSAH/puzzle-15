@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+import static controller.Variables.heightTiles;
+import static controller.Variables.widthTiles;
 import static controller.controller.gameFinished;
 
 public class MyPanel extends JPanel {
@@ -51,7 +53,9 @@ public class MyPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (PuzzlePiece piece : puzzlePieces) {
-            g.drawImage(piece.img, piece.getLocation().x, piece.getLocation().y, (int) this.getSize().getWidth() / 3, (int) this.getSize().getHeight() / 3, null);
+            g.drawImage(piece.img, piece.getLocation().x, piece.getLocation().y,
+
+                    (int) this.getSize().getWidth() / widthTiles, (int) this.getSize().getHeight() / heightTiles, null);
         }
     }
 }
