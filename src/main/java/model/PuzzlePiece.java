@@ -21,7 +21,11 @@ public class PuzzlePiece {
             e.printStackTrace();
         }
         if (!imageName.equals("missing.jpg")) {
-            pieceNumber = Integer.parseInt(imageName.substring(0, 1)) - 1;
+            if(imageName.charAt(1) == '.') {
+                pieceNumber = Integer.parseInt(imageName.substring(0, 1)) - 1;
+            }else{
+                pieceNumber = Integer.parseInt(imageName.substring(0, 2)) - 1;
+            }
         } else {
             pieceNumber = widthTiles * heightTiles - 1;
         }

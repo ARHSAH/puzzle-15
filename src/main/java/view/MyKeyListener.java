@@ -6,8 +6,8 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import static controller.Variables.heightTiles;
-import static controller.Variables.widthTiles;
+import static controller.Controller.gameFinished;
+import static controller.Variables.*;
 
 public class MyKeyListener implements KeyListener {
     @Override
@@ -47,7 +47,43 @@ public class MyKeyListener implements KeyListener {
             MyPanel.getInstance().setMissingPiece(missingPieceIndex + widthTiles);
         }
 
-        if (MyPanel.getInstance().gameState.equals("finished")) {
+        if(mode){
+            if (keyEvent.getKeyChar() == 'e') {
+                if (missingPieceIndex % widthTiles == 0 ||
+                        missingPieceIndex <= widthTiles - 1 ) {
+                    return;
+                }
+                MyPanel.getInstance().swapPieces(missingPieceIndex,
+                        missingPieceIndex - widthTiles - 1);
+                MyPanel.getInstance().setMissingPiece(missingPieceIndex - widthTiles - 1);
+            } else if (keyEvent.getKeyChar() == 'r') {
+                if (missingPieceIndex % widthTiles == widthTiles - 1 ||
+                        missingPieceIndex <= widthTiles - 1 ) {
+                    return;
+                }
+                MyPanel.getInstance().swapPieces(missingPieceIndex,
+                        missingPieceIndex - widthTiles + 1);
+                MyPanel.getInstance().setMissingPiece(missingPieceIndex - widthTiles + 1);
+            } else if (keyEvent.getKeyChar() == 'd') {
+                if (missingPieceIndex % widthTiles == 0 ||
+                        missingPieceIndex >= widthTiles * (heightTiles - 1) ) {
+                    return;
+                }
+                MyPanel.getInstance().swapPieces(missingPieceIndex,
+                        missingPieceIndex + widthTiles - 1);
+                MyPanel.getInstance().setMissingPiece(missingPieceIndex + widthTiles - 1);
+            } else if (keyEvent.getKeyChar() == 'f') {
+                if (missingPieceIndex % widthTiles == widthTiles - 1 ||
+                        missingPieceIndex >= widthTiles * (heightTiles - 1) ) {
+                    return;
+                }
+                MyPanel.getInstance().swapPieces(missingPieceIndex,
+                        missingPieceIndex + widthTiles + 1);
+                MyPanel.getInstance().setMissingPiece(missingPieceIndex + widthTiles + 1);
+            }
+        }
+
+        if (gameState.equals("finished")) {
             return;
         }
     }
