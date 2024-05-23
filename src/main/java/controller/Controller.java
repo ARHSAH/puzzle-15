@@ -123,7 +123,7 @@ public class Controller {
         ArrayNode images = (ArrayNode) rootNode.get("images");
         for (int i = 0; i < piecesRandomOrder.size(); i++) {
             initialOrder.set(i, piecesRandomOrder.get(i));
-            if (piecesRandomOrder.get(i) == getMissingPiece()) {
+            if (i == getMissingPiece()) {
                 images.set(i, "missing.jpg");
             } else {
                 images.set(i, (piecesRandomOrder.get(i) + 1) + ".png");

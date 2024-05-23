@@ -59,9 +59,22 @@ public class Main {
                 }
 
                 if (gameState.equals("finished")) {
-                    //randomImageOrder();
                     JOptionPane.showMessageDialog(frame, "You finished the game, congratulation", "Game Finished", JOptionPane.INFORMATION_MESSAGE);
                     gameFinished = true;
+
+                    //random
+//                    if(widthTiles == 3 && heightTiles == 3){
+//                        randomImageOrder();
+//                        while(!solvable3(getMissingPiece(),piecesRandomOrder)){
+//                            randomImageOrder();
+//                        }
+//                    }
+//                    if(widthTiles == 4 && heightTiles == 4){
+//                        randomImageOrder();
+//                        while(!solvable4(getMissingPiece(),piecesRandomOrder)){
+//                            randomImageOrder();
+//                        }
+//                    }
                 }
             }
         }
