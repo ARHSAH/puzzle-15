@@ -14,9 +14,9 @@ public class PuzzleBoard {
 
     public int[][] getPuzzleBoard() {
         puzzleBoard = new int[heightTiles][widthTiles];
-        for (int i = 0; i < widthTiles; i++) {
-            for (int j = 0; j < heightTiles; j++) {
-                puzzleBoard[j][i] = piecesRandomOrder.get(i * widthTiles + j);
+        for (int i = 0; i < heightTiles; i++) {
+            for (int j = 0; j < widthTiles; j++) {
+                puzzleBoard[i][j] = piecesRandomOrder.get(i * widthTiles + j);
             }
 
         }

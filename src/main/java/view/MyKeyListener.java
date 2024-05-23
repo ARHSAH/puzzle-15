@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import static controller.Controller.gameFinished;
+import static controller.Controller.getMissingPiece;
 import static controller.Variables.*;
 
 public class MyKeyListener implements KeyListener {
@@ -16,7 +17,7 @@ public class MyKeyListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent keyEvent) {
-        int missingPieceIndex = MyPanel.getInstance().missingPiece;
+        int missingPieceIndex = getMissingPiece();
         if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
             if (missingPieceIndex % widthTiles == widthTiles - 1) {
                 return;

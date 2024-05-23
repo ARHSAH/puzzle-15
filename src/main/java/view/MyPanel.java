@@ -6,9 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+import static controller.Controller.*;
 import static controller.Variables.*;
-import static controller.Controller.gameFinished;
-import static controller.Controller.setImagesWithList;
 
 public class MyPanel extends JPanel {
     private static MyPanel panelInstance;
@@ -29,9 +28,7 @@ public class MyPanel extends JPanel {
         frame.setLocation(this.getLocation());
         frame.add(this);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        for (int i = 0; i < piecesRandomOrder.size(); i++)
-            if (piecesRandomOrder.get(i) == widthTiles * heightTiles - 1)
-                this.setMissingPiece(i);
+        this.setMissingPiece(getMissingPiece());
         setImagesWithList(this);
         this.setPuzzlePieces(puzzlePieces);
         frame.addKeyListener(new MyKeyListener());
@@ -51,7 +48,9 @@ public class MyPanel extends JPanel {
         puzzlePieces.get(i).setPieceNumber(puzzlePieces.get(j).getPieceNumber());
         puzzlePieces.get(j).setImage(copy.img);
         puzzlePieces.get(j).setPieceNumber(copy.getPieceNumber());
-
+        int helper = piecesRandomOrder.get(i);
+        piecesRandomOrder.set(i, piecesRandomOrder.get(j));
+        piecesRandomOrder.set(j, helper);
         if (gameFinished()) {
             gameState = "finished";
         }
