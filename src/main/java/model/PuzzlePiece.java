@@ -6,6 +6,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static controller.Variables.heightTiles;
+import static controller.Variables.widthTiles;
+
 public class PuzzlePiece {
     public Image img;
     int pieceNumber;
@@ -20,7 +23,7 @@ public class PuzzlePiece {
         if (!imageName.equals("missing.jpg")) {
             pieceNumber = Integer.parseInt(imageName.substring(0, 1)) - 1;
         } else {
-            pieceNumber = 15;
+            pieceNumber = widthTiles * heightTiles - 1;
         }
     }
 

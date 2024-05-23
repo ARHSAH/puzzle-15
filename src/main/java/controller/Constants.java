@@ -22,5 +22,10 @@ public class Constants {
 
         widthTiles = rootNode.path("widthTiles").asInt();
         heightTiles = rootNode.path("heightTiles").asInt();
+
+        for(int i =0 ; i < rootNode.path("initial-ordering").size() ; i++){
+            int helper = rootNode.path("initial-ordering").get(i).asInt();
+            piecesRandomOrder.add(helper);
+        }
     }
 }

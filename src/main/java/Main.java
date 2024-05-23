@@ -1,6 +1,7 @@
 import controller.Constants;
 import controller.Variables;
 import model.Location;
+import model.PuzzleBoard;
 import model.PuzzlePiece;
 import view.MyKeyListener;
 import view.MyPanel;
@@ -31,11 +32,6 @@ public class Main {
         frame.setLocation(panel.getLocation());
         frame.add(panel);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-//        ArrayList<Integer> piecesRandomOrder =
-//                new ArrayList<Integer>(Arrays.asList(4, 1, 7, 2, 6, 0, 8, 3, 5));
-        ArrayList<Integer> piecesRandomOrder =
-                new ArrayList<Integer>(Arrays.asList(4, 1, 7, 2, 6, 0, 8, 3, 5, 9, 10, 11,
-                        12, 13, 14, 15));
 
         for (int i = 0; i < piecesRandomOrder.size(); i++)
             if (piecesRandomOrder.get(i) == widthTiles * heightTiles - 1)
@@ -65,6 +61,26 @@ public class Main {
                                         heightTiles * (i / widthTiles))));
             }
         }
+//        for (int i = 0; i < widthTiles; i++) {
+//            for (int j = 0; j < heightTiles; j++) {
+//                if (panel.missingPiece != (i + 1) * (j + 1) - 1) {
+//                    puzzlePieces.add(new
+//                            PuzzlePiece(
+//                            PuzzleBoard.getINSTANCE().getPuzzleBoard()[i][j]
+//                                    + 1 + ".png",
+//                            new Location(panel.getWidth() / widthTiles *
+//                                    i,
+//                                    panel.getHeight() /
+//                                            heightTiles * j)));
+//                } else {;
+//                    puzzlePieces.add(new PuzzlePiece("missing.jpg",
+//                            new Location(panel.getWidth() / widthTiles *
+//                                    i,
+//                                    panel.getHeight() /
+//                                            heightTiles * j)));
+//                }
+//            }
+//        }
         panel.setPuzzlePieces(puzzlePieces);
         frame.addKeyListener(new MyKeyListener());
         frame.setVisible(true);

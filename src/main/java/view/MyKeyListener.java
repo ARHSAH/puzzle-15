@@ -2,6 +2,7 @@ package view;
 
 import view.MyPanel;
 
+import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -15,9 +16,7 @@ public class MyKeyListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent keyEvent) {
-
         int missingPieceIndex = MyPanel.getInstance().missingPiece;
-        System.out.println(missingPieceIndex);
         if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
             if (missingPieceIndex % widthTiles == widthTiles - 1) {
                 return;
